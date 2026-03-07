@@ -2,7 +2,7 @@ CXX := c++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98
 
 NAME := a.out
-SRC := Form.cpp main.cpp Bureaucrat.cpp
+SRC := Form.cpp main.cpp Bureacrat.cpp
 
 OBJ_DIR := obj
 OBJ := $(SRC:%.cpp=$(OBJ_DIR)/%.o)

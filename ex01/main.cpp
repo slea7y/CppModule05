@@ -1,3 +1,5 @@
+#include "Bureacrat.hpp"
+
 int main() {
 
 	// assigment with grade too high
