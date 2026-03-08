@@ -1,78 +1,64 @@
 #include "Bureacrat.hpp"
+#include "Form.hpp"
+#include <cstddef>
+#include <exception>
+#include <ostream>
+#include <stdio.h>
 
 int main() {
+	try {
+		std::cout << "==================================\n" << "assigment with grade to sign too low"
+		<< std::endl;
+		Form("name", 160, 1);
+	} catch (std::exception& e) {
+		std::cerr << "\033[1;31mException: \033[0m" << e.what() << std::endl;
+	}
+	// if (f != nullptr)
+	//assiging form with wrong grade value for Form
+	try {
+		std::cout << "==================================\n" << "assigment with grade to execute too low"
+		<< std::endl;
+		Form("name", 58, 155);
+	} catch (std::exception& e) {
+		std::cerr << "\033[1;31mException: \033[0m" << e.what() << std::endl;
+	}
 
-	// assigment with grade too high
+	//assiging form's toSign grade with value too high
 	try {
-		std::cout << "==================================\n" << "assigment with grade too high"
+		std::cout << "==================================\n" << "assigment with grade to sign too high"
 		<< std::endl;
-		Bureaucrat("Adam", 0);
-	} catch (std::exception& e ) {
+		Form("name", 0, 1);
+	} catch (std::exception& e) {
 		std::cerr << "\033[1;31mException: \033[0m" << e.what() << std::endl;
 	}
-	std::cout << "==================================\n";
-	// assigment with grade too low
+	// Form f;
+	//assiging form's toExec grade with value too high
 	try {
-		std::cout << "==================================\n" << "assigment with grade too low"
+		std::cout << "==================================\n" << "assigment with grade to execute too high"
 		<< std::endl;
-		Bureaucrat("Adam", 151);
-	} catch (std::exception& e ) {
+		Form("name", 58, 0);
+	} catch (std::exception& e) {
 		std::cerr << "\033[1;31mException: \033[0m" << e.what() << std::endl;
 	}
-	std::cout << "==================================\n";
-	// correct assigment
-	try {
-		std::cout << "==================================\n" << "grade in correct ratio ;)"
-		<< std::endl;
-		Bureaucrat("Adam", 1);
-	} catch (std::exception& e ) {
-		std::cerr << "\033[1;31mException: \033[0m" << e.what() << std::endl;
-	}
-	std::cerr << "\033[1;32mno exception\033[0m everything okay 👍"<< std::endl;
-	std::cout << "==================================\n";
-	// correct increment
-		try {
-		std::cout << "==================================\n" << "increment grade correctlly"
-		<< std::endl;
-		Bureaucrat *Adam = new Bureaucrat("Adam", 2);
-		Adam->incrementGrade();
-		delete Adam;
-	} catch (std::exception& e ) {
-		std::cerr << "\033[1;31mException: \033[0m" << e.what() << std::endl;
-	}
-	std::cerr << "\033[1;32mno exception\033[0m everything okay 👍"<< std::endl;
-	std::cout << "==================================\n";
-	// incorrect increment
-		try {
-		std::cout << "==================================\n" << "increment grade incorrectlly"
-		<< std::endl;
-		Bureaucrat Adam = Bureaucrat("Adam", 1);
-		Adam.incrementGrade();
-	} catch (std::exception& e ) {
-		std::cerr << "\033[1;31mException: \033[0m" << e.what() << std::endl;
-	}
-	std::cout << "==================================\n";
 
-	// correct decrement
-		try {
-		std::cout << "==================================\n" << "decrement grade correctlly"
-		<< std::endl;
-		Bureaucrat *Adam = new Bureaucrat("Adam", 1);
-		Adam->decrementGrade();
-		delete Adam;
-	} catch (std::exception& e ) {
+	Form f("divorce papers", 1 ,1);
+	Bureaucrat b("adam", 2);
+	std::cout << f << std::endl;
+	std::cout << b << std::endl ;
+	
+	//adam tries to sign the papers but hes grade is too low
+	try {
+		b.signForm(f);
+	} catch(std::exception& e) {
 		std::cerr << "\033[1;31mException: \033[0m" << e.what() << std::endl;
 	}
-	std::cerr << "\033[1;32mno exception\033[0m everything okay 👍"<< std::endl;
-	std::cout << "==================================\n";
-	// incorrect decrement
-		try {
-		std::cout << "==================================\n" << "decrement grade incorrectlly"
-		<< std::endl;
-		Bureaucrat Adam = Bureaucrat("Adam", 150);
-		Adam.decrementGrade();
-	} catch (std::exception& e ) {
+
+	//lets increment grade now
+	try {
+		b.incrementGrade();
+		b.signForm(f);
+	} catch(std::exception& e) {
 		std::cerr << "\033[1;31mException: \033[0m" << e.what() << std::endl;
 	}
-	std::cout << "==================================\n";
+		
 }

@@ -1,5 +1,6 @@
 CXX := c++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98
+# CXXFLAGS := 
 
 NAME := a.out
 SRC := Form.cpp main.cpp Bureacrat.cpp

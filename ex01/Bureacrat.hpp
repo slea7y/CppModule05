@@ -1,7 +1,10 @@
 #include <exception>
 #include <iostream>
+#include <ostream>
 #include <string>
+// #include "Form.hpp"
 
+class Form;
 class Bureaucrat {
 	private:
 		const std::string	_name;
@@ -18,6 +21,8 @@ class Bureaucrat {
 		void incrementGrade();
 		void decrementGrade();
 
+		//new 
+		void signForm(Form &f);
 		class GradeTooLowException : public std::exception {
 			public:
 				virtual const char *what() const throw();
@@ -28,3 +33,5 @@ class Bureaucrat {
 				virtual const char *what() const throw();
 		};
 };
+
+std::ostream &operator<<(std::ostream& os, const Bureaucrat& obj);
