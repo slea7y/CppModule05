@@ -1,22 +1,23 @@
 #include "Bureaucrat.hpp"
 // #include "stdio.h"
+//The object must never exist in an invalid state
+
 
 Bureaucrat::Bureaucrat() : _name("someGuy13"), _grade(150) {
-	std::cout << "* default constructor *\n" << _name << ", bureaucrat grade " << _grade << std::endl;
+	std::cout << "* Bureaucrat's default constructor *\n" << _name << ", bureaucrat grade " << _grade << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name){
-	if (grade > 150){
+	if (grade > 150)
 		throw GradeTooLowException();
-	}
 	else if (grade < 1)
 		throw GradeTooHighException();
 	this->_grade = grade;
-	std::cout << "* parameterized constructor *\n" << _name << ", bureaucrat grade " << _grade << std::endl;
+	std::cout << "\n" << _name << ", bureaucrat grade " << _grade << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& obj) : _name(obj._name) , _grade(obj._grade) {
-	std::cout << "* copy constructor *\n" << _name << ", bureaucrat grade " << _grade << std::endl;
+	std::cout << "*  Bureaucrat's copy constructor *\n" << _name << ", bureaucrat grade " << _grade << std::endl;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
@@ -60,12 +61,17 @@ void Bureaucrat::incrementGrade() {
 	if (this->_grade - 1 < 1)
 		throw GradeTooHighException();
 	std::cout << "incrementing this grade from " << this->_grade << " to " << this->_grade - 1 << "!" << std::endl;
-	setGrade(this->_grade -= 1);
+	setGrade(this->_grade - 1);
 }
 
 void Bureaucrat::decrementGrade() {
 	if (this->_grade + 1 > 150)
 		throw GradeTooLowException();
-	std::cout << this->_grade << " decrementing this grade !" << std::endl;
-	setGrade(this->_grade += 1);
+	std::cout << "decrementing this grade from " << this->_grade << " to " << this->_grade - 1 << "!" << std::endl;
+	setGrade(this->_grade + 1);
+}
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat *obj){
+	os << obj->getName();
+	return os;
 }

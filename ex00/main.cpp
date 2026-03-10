@@ -78,5 +78,4 @@ int main() {
 		std::cerr << "\033[1;31mException: \033[0m" << e.what() << std::endl;
 	}
 	std::cout << "==================================\n";
-	std::cout << "alless gute\n";
 }

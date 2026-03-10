@@ -1,5 +1,6 @@
 #include <iostream>
 #include <exception>
+#include <ostream>
 
 class Bureaucrat {
 	private:
@@ -18,7 +19,7 @@ class Bureaucrat {
 
 		void incrementGrade();
 		void decrementGrade();
-		// exeptions
+		// exceptions
 		class GradeTooHighException : public std::exception {
 			public:
 				virtual const char *what() const throw();
@@ -26,6 +27,8 @@ class Bureaucrat {
 
 		class GradeTooLowException : public std::exception {
 			public:
-				const char * what() const throw();
+				virtual const char *what() const throw();
 		};
 };
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat *obj);

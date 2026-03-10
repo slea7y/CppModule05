@@ -2,7 +2,7 @@
 #include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : _name("SomeGuy"), _grade(150) {
-	std::cout << "* default constructor called *" << std::endl;
+	std::cout << "*  Bureaucrat's default constructor called *" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {
@@ -11,16 +11,16 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 	else if (grade < 1)
 		throw GradeTooHighException();
 	this->_grade = grade;
-	std::cout << "* parameterized constructor *\n" << _name << ", bureaucrat grade " << _grade << std::endl;}
+	std::cout << "* Bureaucrat's parameterized constructor *\n" << _name << ", bureaucrat grade " << _grade << std::endl;}
 
 Bureaucrat::Bureaucrat(const Bureaucrat &obj) : _name(obj._name) , _grade(obj._grade) {
-	std::cout << "* copy constructor *\n" << _name << ", bureaucrat grade " << _grade << std::endl;
+	std::cout << "* Bureaucrat's copy constructor *\n" << _name << ", bureaucrat grade " << _grade << std::endl;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &obj) {
 	if (this != &obj)
 		this->_grade = obj._grade;
-	std::cout << "* assignment operator *\n" << _name << ", bureaucrat grade " << _grade << std::endl;
+	std::cout << "* Bureaucrat's assignment operator *\n" << _name << ", bureaucrat grade " << _grade << std::endl;
 	return *this;
 }
 
@@ -69,7 +69,7 @@ const char *Bureaucrat::GradeTooHighException::what() const throw() {
 }
 
 void Bureaucrat::signForm(Form &f) {
-	f.beSigned(*this);		
+	f.beSigned(*this);
 }
 // std::ostream& operator<<(std::ostream& os, const Fixed& obj)
 

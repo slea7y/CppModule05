@@ -3,7 +3,7 @@
 #include <string>
 
 Form::Form() : _name("default"), _signed(false), _gradeToSign(150), _gradeExec(150) {
-	std::cout << "* default constructor *\n" << _name << ", form grade to sign: " << _gradeToSign << std::endl;
+	std::cout << "* Form's default constructor *\n" << _name << ", form grade to sign: " << _gradeToSign << std::endl;
 }
 
 Form::Form(std::string name, int gradeToSign, int gradeToExec) : _name(name), _gradeToSign(gradeToSign), _gradeExec(gradeToExec) {
@@ -16,7 +16,7 @@ Form::Form(std::string name, int gradeToSign, int gradeToExec) : _name(name), _g
 	else if (gradeToExec < 1)
 		throw GradeTooHighException();
 	_signed = false;
-	std::cout << "* parameterized constructor *\n" << _name << ", form grade to sign: " << _gradeToSign << std::endl;
+	std::cout << "* parameterized constructor *\n" << _name << ", formgrade to sign: " << _gradeToSign << std::endl;
 }
 
 Form::Form(const Form& other) : _name(other._name), _signed(other._signed), _gradeToSign(other._gradeToSign), 
@@ -30,7 +30,7 @@ Form &Form::operator=(const Form& other) {
 }
 
 Form::~Form() {
-	std::cout << "* Form's destructor called *" << std::endl;
+	std::cout << "* Form's destructor called *\ninfo:" << std::endl;
 }
 
 const char *Form::GradeTooHighException::what() const throw() {
@@ -58,7 +58,6 @@ int Form::getGradeExec() const {
 }
 
 void Form::beSigned(Bureaucrat& b) {
-	std::cout << "check out: " << b.getGrade() << " " << this->_gradeToSign << std::endl;
 	if (b.getGrade() > this->_gradeToSign) {
 		std::cout << b.getName() << " couldn’t sign " << this->_name << " because " << "hes grade is too low" << std::endl ;
 		// throw GradeTooLowException();	
