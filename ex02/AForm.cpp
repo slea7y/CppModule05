@@ -45,6 +45,10 @@ const char *AForm::FormNotSignedException::what() const throw() {
 	return "form not signed";
 }
 
+const char *AForm::FileNotCreatedException::what() const throw() {
+	return "file count not be created :_(";
+}
+
 const std::string AForm::getName() const {
 	return this->_name;
 }
@@ -80,13 +84,15 @@ void AForm::beSigned(Bureaucrat& b) {
 
 
 void AForm::execute(Bureaucrat const &executor) const {
-	if (!this->_signed)
-		throw FormNotSignedException();
-	else if (executor.getGrade() < this->_gradeExec)
-		throw GradeTooLowException();	
-	else {
-		// std::co
-	}
+	std::cout << "heey it should never happen ya" << std::endl;
+
+	// if (!this->_signed)
+	// 	throw FormNotSignedException();
+	// else if (executor.getGrade() < this->_gradeExec)
+	// 	throw GradeTooLowException();	
+	// else {
+	// 	// std::co
+	// }
 }
 
 

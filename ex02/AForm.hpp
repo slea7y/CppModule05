@@ -24,7 +24,7 @@ class AForm {
 		int getGradeExec() const;
 		void beSigned(Bureaucrat& b);
 		
-		void execute(Bureaucrat const & executor) const ;
+		virtual void execute(Bureaucrat const & executor) const ;
 
 		// exceptions
 		class GradeTooHighException : public std::exception {
@@ -42,6 +42,10 @@ class AForm {
 				virtual const char *what() const throw();
 		};
 
+		class FileNotCreatedException : public std::exception {
+			public:
+				virtual const char *what() const throw();
+		};
 };
 
 std::ostream& operator<<(std::ostream& os, const AForm& obj);
