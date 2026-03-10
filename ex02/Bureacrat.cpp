@@ -2,7 +2,7 @@
 #include "AForm.hpp"
 
 Bureaucrat::Bureaucrat() : _name("SomeGuy"), _grade(150) {
-	std::cout << "* default constructor called *" << std::endl;
+	std::cout << "* Bureaucrat's default constructor called *" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {
@@ -71,6 +71,14 @@ const char *Bureaucrat::GradeTooHighException::what() const throw() {
 void Bureaucrat::signForm(AForm &f) {
 	f.beSigned(*this);		
 }
+
+void Bureaucrat::executeForm(AForm const & form) {
+	if (this->getGrade() < form.getGradeToSign() || this->getGrade() < form.getGradeExec())
+		throw GradeTooLowException();
+	form.execute(*this);
+	std::cout << this->_name << " executed " << form.getName() << std::endl ;
+}
+
 // std::ostream& operator<<(std::ostream& os, const Fixed& obj)
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj) {

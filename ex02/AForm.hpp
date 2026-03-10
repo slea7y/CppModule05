@@ -1,4 +1,5 @@
 // #include "Bureacrat.hpp"
+#pragma once
 #include <exception>
 #include <iostream>
 #include <ostream>

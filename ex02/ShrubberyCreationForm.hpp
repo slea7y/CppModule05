@@ -1,5 +1,6 @@
+#pragma once
+
 #include "AForm.hpp"
-#include <iterator>
 
 class ShrubberyCreationForm : public AForm {
 	private:
@@ -12,6 +13,4 @@ class ShrubberyCreationForm : public AForm {
 		~ShrubberyCreationForm();
 		void execute(const Bureaucrat &executor) const override;
 		std::string getTarget();
-	};
-
-// std::ostream& operator<<(std::ostream &os, const ShrubberyCreationForm &obj);
+};
