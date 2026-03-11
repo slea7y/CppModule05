@@ -1,10 +1,12 @@
-#include "AForm.hpp"
+#pragma once
 
+#include "AForm.hpp"
 class Intern {
 	private:
-		Intern();
+		AForm *formPointer;
 	public:
-		Intern( std::string name, std::string target );
+		Intern();
+		// Intern( std::string name, std::string target );
 		Intern( const Intern &obj );
 		Intern &operator=( const Intern &other );
 		~Intern();
