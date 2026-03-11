@@ -1,7 +1,5 @@
 #include "Bureaucrat.hpp"
-// #include "stdio.h"
 //The object must never exist in an invalid state
-
 
 Bureaucrat::Bureaucrat() : _name("someGuy13"), _grade(150) {
 	std::cout << "* Bureaucrat's default constructor *\n" << _name << ", bureaucrat grade " << _grade << std::endl;
@@ -12,23 +10,24 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name){
 		throw GradeTooLowException();
 	else if (grade < 1)
 		throw GradeTooHighException();
+	std::cout << "* Bureaucrat's parametrized constructor *" << std::endl ;
 	this->_grade = grade;
-	std::cout << "\n" << _name << ", bureaucrat grade " << _grade << std::endl;
+	std::cout << _name << ", bureaucrat grade " << _grade << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& obj) : _name(obj._name) , _grade(obj._grade) {
-	std::cout << "*  Bureaucrat's copy constructor *\n" << _name << ", bureaucrat grade " << _grade << std::endl;
+	std::cout << "*  Bureaucrat's copy constructor *" << std::endl << _name << ", bureaucrat grade " << _grade << std::endl;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
 	if (this != &other)
 		this->_grade = other._grade;
-	std::cout << "* assignment operator *\n" << _name << ", bureaucrat grade " << _grade << std::endl;
+	std::cout << "* assignment operator *" << std::endl << _name << ", bureaucrat grade " << _grade << std::endl;
 	return *this;
 }
 
 Bureaucrat::~Bureaucrat() {
-	std::cout << "* destructor *\n" << _name << ", bureaucrat grade " << _grade << std::endl;
+	std::cout << "* destructor " << _name << ", bureaucrat grade " << _grade << " *" << std::endl;
 }
 
 std::string Bureaucrat::getName() const {
@@ -71,7 +70,7 @@ void Bureaucrat::decrementGrade() {
 	setGrade(this->_grade + 1);
 }
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat *obj){
-	os << obj->getName();
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj){
+	os << obj.getName() << " grade: " << obj.getGrade();
 	return os;
 }

@@ -1,11 +1,9 @@
 #include "Bureaucrat.hpp"
-// #include <cstdio>
 #include <exception>
 #include <iostream>
 
 int main() {
-
-	// assigment with grade too high
+	// assigment with grade too high //u can see here that no bureaucrat was created
 	try {
 		std::cout << "==================================\n" << "assigment with grade too high"
 		<< std::endl;
@@ -78,4 +76,15 @@ int main() {
 		std::cerr << "\033[1;31mException: \033[0m" << e.what() << std::endl;
 	}
 	std::cout << "==================================\n";
+
+	//tests for orthodox canonical form
+	std::cout << "==================================\n";
+	std::cout << "* orthodox canonical form test *" << std::endl;
+	Bureaucrat a;
+	Bureaucrat b("name", 15);
+	a = b;
+	Bureaucrat c(a);
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << c << std::endl;
 }
