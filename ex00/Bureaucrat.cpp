@@ -66,7 +66,7 @@ void Bureaucrat::incrementGrade() {
 void Bureaucrat::decrementGrade() {
 	if (this->_grade + 1 > 150)
 		throw GradeTooLowException();
-	std::cout << "decrementing this grade from " << this->_grade << " to " << this->_grade - 1 << "!" << std::endl;
+	std::cout << "decrementing this grade from " << this->_grade << " to " << this->_grade + 1 << "!" << std::endl;
 	setGrade(this->_grade + 1);
 }
 
