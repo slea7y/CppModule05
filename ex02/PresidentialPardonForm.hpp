@@ -1,4 +1,5 @@
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 class PresidentalPardonForm : public AForm {
 	private:
@@ -9,6 +10,6 @@ class PresidentalPardonForm : public AForm {
 		PresidentalPardonForm( const PresidentalPardonForm &obj );
 		PresidentalPardonForm &operator=( const PresidentalPardonForm &obj );
 		~PresidentalPardonForm();
-		void execute(const Bureaucrat &executor) const override;
+		void execute(const Bureaucrat &executor) const;
 		std::string getTarget();
 };
