@@ -9,6 +9,8 @@
 
 int main()
 {
+	srand(time(0));
+
 	//orthodox canonical form for all the classes of forms
 	std::cout << std::endl << "~~~test orthodox canonical form~~~" << std::endl;
 	ShrubberyCreationForm scForm("home");
@@ -59,5 +61,13 @@ int main()
 	bw.executeForm(ppForm);
 	Bureaucrat be("the executor", 5);
 	be.executeForm(ppForm);
-	
+
+	std::cout << std::endl << "~~~~~~~ sign and execute rr ~~~~~~~" << std::endl;
+
+	be.signForm(rrForm);
+	bw.executeForm(rrForm);
+	be.executeForm(rrForm);
+	bw.executeForm(rrForm);
+	be.executeForm(rrForm);
+	b.executeForm(rrForm);
 }
