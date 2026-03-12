@@ -1,5 +1,6 @@
-#include "Bureacrat.hpp"
+#include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include <exception>
 
 Bureaucrat::Bureaucrat() : _name("SomeGuy"), _grade(150) {
 	std::cout << "*  Bureaucrat's default constructor called *" << std::endl;
@@ -51,14 +52,14 @@ void Bureaucrat::incrementGrade() {
 	if (this->_grade < 1)
 		throw GradeTooHighException();
 	std::cout << "incrementing this grade from " << this->_grade << " to " << this->_grade - 1 << "!" << std::endl;
-	this->_grade -= 1;
+	_grade--;
 }
 
 void Bureaucrat::decrementGrade() {
 	if (this->_grade > 150)
 		throw GradeTooLowException();
 	std::cout << "decrementing this grade from " << this->_grade << " to " << this->_grade + 1 << "!" << std::endl;
-	setGrade(this->_grade += 1);
+	_grade++;
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
@@ -70,10 +71,15 @@ const char *Bureaucrat::GradeTooHighException::what() const throw() {
 }
 
 void Bureaucrat::signForm(Form &f) {
-	f.beSigned(*this);
+	try {
+		f.beSigned(*this); 
+	}
+	catch (std::exception &e) {
+		std::cerr << "\033[1;31mException: \033[0m" << this->_name << " couldn’t sign " << f.getName() << " because " << e.what() << std::endl ;
+	}
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj) {
-	os << obj.getName();
+	os << obj.getName() << " with grade: " << obj.getGrade();
 	return os;
 }

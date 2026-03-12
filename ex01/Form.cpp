@@ -1,5 +1,5 @@
 #include "Form.hpp"
-#include "Bureacrat.hpp"
+#include "Bureaucrat.hpp"
 #include <string>
 
 Form::Form() : _name("default"), _signed(false), _gradeToSign(150), _gradeExec(150) {
@@ -16,14 +16,16 @@ Form::Form(std::string name, int gradeToSign, int gradeToExec) : _name(name), _g
 	else if (gradeToExec < 1)
 		throw GradeTooHighException();
 	_signed = false;
-	std::cout << "* parameterized constructor *\n" << _name << ", formgrade to sign: " << _gradeToSign << std::endl;
+	std::cout << "* Form's parameterized constructor *\n" << _name << ", form grade to sign: " << _gradeToSign << std::endl;
 }
 
 Form::Form(const Form& other) : _name(other._name), _signed(other._signed), _gradeToSign(other._gradeToSign), 
 	_gradeExec(other._gradeExec) {
+	std::cout << "* Form's copy constructor *\n" << _name << ", form grade to sign: " << _gradeToSign << std::endl;
 }
 
 Form &Form::operator=(const Form& other) {
+	std::cout << "* Form's assigment constructor *\n" << _name << ", form grade to sign: " << _gradeToSign << std::endl;
 	if (this != &other)
 		this->_signed = other._signed;
 	return *this;
@@ -58,13 +60,14 @@ int Form::getGradeExec() const {
 }
 
 void Form::beSigned(Bureaucrat& b) {
-	if (b.getGrade() > this->_gradeToSign) {
-		std::cout << b.getName() << " couldn’t sign " << this->_name << " because " << "hes grade is too low" << std::endl ;
+	if (b.getGrade() > this->_gradeToSign)
+		throw GradeTooLowException();
+	if (this->getFormStatus() == true) {
+		std::cout << b.getName() << " tries to sign [" << this->getName() << "] but this form was already signed " << std::endl ;
+		return ;
 	}
-	else {
-		this->_signed = true;
-		std::cout << b.getName() << " signed " << this->_name << std::endl ;
-	}
+	this->_signed = true;
+	std::cout << b.getName() << " signed " << this->_name << std::endl ;
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& obj) {
