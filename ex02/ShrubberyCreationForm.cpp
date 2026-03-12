@@ -20,8 +20,10 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other) {
 	std::cout << "\033[32m* Shrubbery Creation Form assigment operator *\033[0m" << std::endl;
-	if (this != &other)
+	if (this != &other) {
 		AForm::operator=(other);
+		this->_target = other._target;
+	}
 	return *this;
 }
 
@@ -32,6 +34,8 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 	if (!this->getFormStatus())
 		throw FormNotSignedException();
+	if (this->getGradeExec() > executor.getGrade())
+		throw GradeTooLowException();
 	std::ofstream file;	
 	std::string filename = this->_target + "_shrubbery";
 	file.open(filename);

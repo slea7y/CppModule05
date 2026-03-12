@@ -18,8 +18,10 @@ RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm &obj ) : AFo
 
 RobotomyRequestForm &RobotomyRequestForm::operator=( const RobotomyRequestForm &obj ) {
 	std::cout << "\033[34m* Robotomy Request Form assigment operator *\033[0m" << std::endl;
-	if (this != &obj)
+	if (this != &obj){
 		AForm::operator=(obj);
+		this->_target = obj._target;
+	}
 	return *this;
 }
 
@@ -30,6 +32,8 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 void RobotomyRequestForm::execute(const Bureaucrat &executor) const {
 	if (!this->getFormStatus())
 		throw FormNotSignedException();
+	if (this->getGradeExec() > executor.getGrade())
+		throw GradeTooLowException();
 	std::cout << "\033[1;32m" << executor << " executed " << this->getName() << "\033[0m" << std::endl ;
 	srand(time(0));
 	int random = rand() % 2;

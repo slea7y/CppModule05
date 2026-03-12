@@ -20,12 +20,15 @@ int main()
 	ShrubberyCreationForm scAssign("farm");
 
 	scAssign = scCopy;
+
 	std::cout << "print copy: " << scCopy << " with target " << scCopy.getTarget() << std::endl;
 	std::cout << "print assign: " << scAssign << " with target " << scAssign.getTarget() << std::endl;
 
 	std::cout << std::endl << "~~~test shrubbery creation~~~" << std::endl;
 	PresidentalPardonForm ppCopy(ppForm);
-	PresidentalPardonForm ppAssign = ppCopy;
+	PresidentalPardonForm ppAssign("farm");
+
+	// ppAssign = ppCopy; uncomment to call for assigment operator
 
 	std::cout << "print copy: " << ppCopy << " with target " << ppCopy.getTarget() << std::endl;
 	std::cout << "print assign: " << ppAssign << " with target " << ppAssign.getTarget() << std::endl;
@@ -35,7 +38,7 @@ int main()
 	RobotomyRequestForm rrAssign("farm");
 
 	std::cout << "print copy: " << rrCopy << " with target " << rrCopy.getTarget() << std::endl;
-	std::cout << "print assign: " << rrAssign << " with target " << rrCopy.getTarget() << std::endl;
+	std::cout << "print assign: " << rrAssign << " with target " << rrAssign.getTarget() << std::endl;
 
 	//execute all the classes correctlly
 	std::cout << std::endl << "~~~~~~~ sign and execute sc ~~~~~~~" << std::endl;
@@ -50,5 +53,11 @@ int main()
 
 	std::cout << std::endl << "~~~~~~~ sign and execute pp ~~~~~~~" << std::endl;
 	//try to exeute a form thats not signed
-	b.executeForm(ppAssign); 
+	b.executeForm(ppForm); 
+	Bureaucrat bw("the writer", 25);
+	bw.signForm(ppForm);
+	bw.executeForm(ppForm);
+	Bureaucrat be("the executor", 5);
+	be.executeForm(ppForm);
+	
 }

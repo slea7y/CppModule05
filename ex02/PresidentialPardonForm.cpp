@@ -18,8 +18,10 @@ PresidentalPardonForm::PresidentalPardonForm( const PresidentalPardonForm &obj )
 
 PresidentalPardonForm &PresidentalPardonForm::operator=( const PresidentalPardonForm &obj ) {
 	std::cout << "\033[35m* Presidental Pardon Form assigment operator *\033[0m" << std::endl;
-	if (this != &obj)
+	if (this != &obj){
 		AForm::operator=(obj);
+		this->_target = obj._target;
+	}
 	return *this;
 }
 
@@ -30,8 +32,10 @@ PresidentalPardonForm::~PresidentalPardonForm() {
 void PresidentalPardonForm::execute(const Bureaucrat &executor) const {
 	if (!this->getFormStatus())
 		throw FormNotSignedException();
+	if (this->getGradeExec() < executor.getGrade())
+		throw GradeTooLowException();
 	std::cout << "\033[1;32m" << executor << " executed " << this->getName() << "\033[0m" << std::endl ;
-	std::cout << "I inform you that " << this->_target << "has been pardoned by Zaphod Beeblebrox, slay !" << std::endl ;
+	std::cout << "I inform you that " << this->_target << " has been pardoned by Zaphod Beeblebrox, slay !" << std::endl ;
 }
 
 std::string PresidentalPardonForm::getTarget() {
