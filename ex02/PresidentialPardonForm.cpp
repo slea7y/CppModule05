@@ -5,7 +5,7 @@ PresidentalPardonForm::PresidentalPardonForm() {
 	this->_target = "default";
 }
 
-PresidentalPardonForm::PresidentalPardonForm(std::string target) {
+PresidentalPardonForm::PresidentalPardonForm(std::string target) : AForm("presidental pardon", 25,5) {
 	std::cout << "\033[35m* Presidental Pardon Form parameterized constructor called *\033[0m" << std::endl;
 }
 

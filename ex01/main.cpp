@@ -1,11 +1,10 @@
 #include "Bureacrat.hpp"
 #include "Form.hpp"
-#include <cstddef>
 #include <exception>
-#include <ostream>
-#include <stdio.h>
+#include <iostream>
 
 int main() {
+	//assiging form's toSign grade with value too low
 	try {
 		std::cout << "==================================\n" << "assigment with grade to sign too low"
 		<< std::endl;
@@ -13,8 +12,7 @@ int main() {
 	} catch (std::exception& e) {
 		std::cerr << "\033[1;31mException: \033[0m" << e.what() << std::endl;
 	}
-	// if (f != nullptr)
-	//assiging form with wrong grade value for Form
+	//assiging form's toExec grade with value too low
 	try {
 		std::cout << "==================================\n" << "assigment with grade to execute too low"
 		<< std::endl;
@@ -22,7 +20,6 @@ int main() {
 	} catch (std::exception& e) {
 		std::cerr << "\033[1;31mException: \033[0m" << e.what() << std::endl;
 	}
-
 	//assiging form's toSign grade with value too high
 	try {
 		std::cout << "==================================\n" << "assigment with grade to sign too high"
@@ -31,7 +28,6 @@ int main() {
 	} catch (std::exception& e) {
 		std::cerr << "\033[1;31mException: \033[0m" << e.what() << std::endl;
 	}
-	// Form f;
 	//assiging form's toExec grade with value too high
 	try {
 		std::cout << "==================================\n" << "assigment with grade to execute too high"
@@ -41,6 +37,9 @@ int main() {
 		std::cerr << "\033[1;31mException: \033[0m" << e.what() << std::endl;
 	}
 
+	std::cout << "==================================" << std::endl;
+	std::cout << "orthodox canonical form tests for Form class" << std::endl;
+	
 	Form f("divorce papers", 1 ,1);
 	Bureaucrat b("adam", 2);
 	std::cout << f << std::endl;

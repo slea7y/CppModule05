@@ -30,7 +30,7 @@ Form &Form::operator=(const Form& other) {
 }
 
 Form::~Form() {
-	std::cout << "* Form's destructor called *\ninfo:" << std::endl;
+	std::cout << "* Form's destructor called " << this->_name << " *" << std::endl;
 }
 
 const char *Form::GradeTooHighException::what() const throw() {
@@ -60,22 +60,14 @@ int Form::getGradeExec() const {
 void Form::beSigned(Bureaucrat& b) {
 	if (b.getGrade() > this->_gradeToSign) {
 		std::cout << b.getName() << " couldn’t sign " << this->_name << " because " << "hes grade is too low" << std::endl ;
-		// throw GradeTooLowException();	
 	}
-	// else if (b.getGrade() < this->_gradeToSign) {
-	// 	std::cout << b.getName() << " couldn’t sign " << this->_name << " because " << std::endl;
-	// 	// throw GradeTooHighException();
-	// }
-	else
-	{
+	else {
 		this->_signed = true;
 		std::cout << b.getName() << " signed " << this->_name << std::endl ;
 	}
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& obj) {
-	os << obj.getName() << " " << obj.getFormStatus() << " " << obj.getGradeToSign() << " " << obj.getGradeExec();
-	// os << obj.getName();
-	
+	os << obj.getName() << " status: " << obj.getFormStatus() << " to sign: " << obj.getGradeToSign() << " to exec: " << obj.getGradeExec();
 	return os;
 }
