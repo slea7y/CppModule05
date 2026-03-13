@@ -3,7 +3,6 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
-#include <cstddef>
 
 Intern::Intern() {
 	std::cout << "* Intern's default constructor *"<< std::endl ;
