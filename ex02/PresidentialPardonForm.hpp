@@ -1,15 +1,15 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-class PresidentalPardonForm : public AForm {
+class PresidentialPardonForm : public AForm {
 	private:
 		std::string _target;
-		PresidentalPardonForm();
+		PresidentialPardonForm();
 	public:
-		PresidentalPardonForm(std::string target);
-		PresidentalPardonForm( const PresidentalPardonForm &obj );
-		PresidentalPardonForm &operator=( const PresidentalPardonForm &obj );
-		~PresidentalPardonForm();
+		PresidentialPardonForm(std::string target);
+		PresidentialPardonForm( const PresidentialPardonForm &obj );
+		PresidentialPardonForm &operator=( const PresidentialPardonForm &obj );
+		~PresidentialPardonForm();
 		void execute(const Bureaucrat &executor) const;
 		std::string getTarget();
 };

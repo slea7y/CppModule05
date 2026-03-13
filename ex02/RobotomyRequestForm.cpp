@@ -36,13 +36,14 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const {
 		throw GradeTooLowException();
 	std::cout << "\033[34m~~~%* Makes some drilling noises *%~~~\033[0m" << std::endl ;
 	if (rand() % 2 == 0){
-		std::cout << this->_target << " filed to robotomy" << std::endl ;
+		std::cout << this->_target << " failed to robotomy" << std::endl ;
 		std::cout << "\033[1;32m" << executor << " executed " << this->getName() << "\033[0m" << std::endl ;
 	}
 	else {
-		std::cout << this->_target << " has beedn robotomized succesfully" << std::endl ;
+		std::cout << this->_target << " has been robotomized successfully" << std::endl ;
 		std::cout << "\033[1;32m" << executor << " executed " << this->getName() << "\033[0m" << std::endl ;
-}}
+	}
+}
 
 std::string RobotomyRequestForm::getTarget() const {
 	return (this->_target);

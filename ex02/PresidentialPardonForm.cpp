@@ -1,23 +1,23 @@
 #include "PresidentialPardonForm.hpp"
 #include "AForm.hpp"
 
-PresidentalPardonForm::PresidentalPardonForm() {
-	std::cout << "\033[35m* Presidental Pardon Form default constructor called *\033[0m" << std::endl;
+PresidentialPardonForm::PresidentialPardonForm() {
+	std::cout << "\033[35m* Presidential Pardon Form default constructor called *\033[0m" << std::endl;
 	this->_target = "default";
 }
 
-PresidentalPardonForm::PresidentalPardonForm(std::string target) : AForm("Presidental Pardon", 25,5) {
-	std::cout << "\033[35m* Presidental Pardon Form parameterized constructor called *\033[0m" << std::endl;
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Presidential Pardon", 25,5) {
+	std::cout << "\033[35m* Presidential Pardon Form parameterized constructor called *\033[0m" << std::endl;
 	this->_target = target;
 }
 
-PresidentalPardonForm::PresidentalPardonForm( const PresidentalPardonForm &obj ) : AForm(obj) {
+PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm &obj ) : AForm(obj) {
+	std::cout << "\033[35m* Presidential Pardon Form copy constructor *\033[0m" << std::endl;
 	this->_target = obj._target;
-	std::cout << "\033[35m* Presidental Pardon Form copy constructor *\033[0m" << std::endl;
 }
 
-PresidentalPardonForm &PresidentalPardonForm::operator=( const PresidentalPardonForm &obj ) {
-	std::cout << "\033[35m* Presidental Pardon Form assigment operator *\033[0m" << std::endl;
+PresidentialPardonForm &PresidentialPardonForm::operator=( const PresidentialPardonForm &obj ) {
+	std::cout << "\033[35m* Presidential Pardon Form assigment operator *\033[0m" << std::endl;
 	if (this != &obj){
 		AForm::operator=(obj);
 		this->_target = obj._target;
@@ -25,11 +25,11 @@ PresidentalPardonForm &PresidentalPardonForm::operator=( const PresidentalPardon
 	return *this;
 }
 
-PresidentalPardonForm::~PresidentalPardonForm() {
-	std::cout << "\033[35m* Presidental Pardon Form default *\033[0m" << std::endl;
+PresidentialPardonForm::~PresidentialPardonForm() {
+	std::cout << "\033[35m* Presidential Pardon Form default *\033[0m" << std::endl;
 }
 
-void PresidentalPardonForm::execute(const Bureaucrat &executor) const {
+void PresidentialPardonForm::execute(const Bureaucrat &executor) const {
 	if (!this->getFormStatus())
 		throw FormNotSignedException();
 	if (this->getGradeExec() < executor.getGrade())
@@ -38,6 +38,6 @@ void PresidentalPardonForm::execute(const Bureaucrat &executor) const {
 	std::cout << "\033[1;32m" << executor << " executed " << this->getName() << "\033[0m" << std::endl ;
 }
 
-std::string PresidentalPardonForm::getTarget() {
+std::string PresidentialPardonForm::getTarget() {
 	return this->_target;
 }

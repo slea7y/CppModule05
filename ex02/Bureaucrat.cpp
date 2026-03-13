@@ -16,13 +16,13 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &obj) : _name(obj._name) , _grade(obj._grade) {
-	std::cout << "* copy constructor *\n" << _name << ", bureaucrat grade " << _grade << std::endl;
+	std::cout << "* Bureaucrat's copy constructor *\n" << _name << ", bureaucrat grade " << _grade << std::endl;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &obj) {
 	if (this != &obj)
 		this->_grade = obj._grade;
-	std::cout << "* assignment operator *\n" << _name << ", bureaucrat grade " << _grade << std::endl;
+	std::cout << "* Bureaucrat's assignment operator *\n" << _name << ", bureaucrat grade " << _grade << std::endl;
 	return *this;
 }
 
@@ -80,17 +80,12 @@ void Bureaucrat::signForm(AForm &f) {
 }
 
 void Bureaucrat::executeForm(AForm const & form) {
-	// if (this->getGrade() < form.getGradeToSign() || this->getGrade() < form.getGradeExec())
-	// 	throw GradeTooLowException();
-	// if (form.getFormStatus() == false)
-	// 	throw AForm::FormNotSignedException();
 	try {
 		form.execute(*this);
 	}
 	catch (std::exception &e) {
 		std::cerr << "\033[1;31mException: \033[0m" << form.getName() << " couldn’t be executed because " << e.what() << std::endl ;
 	}
-	// std::cout << "\033[1;32m" << this->_name << " executed " << form.getName() << "\033[0m" << std::endl ;
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj) {

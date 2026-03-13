@@ -6,7 +6,6 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-
 int main()
 {
 	srand(time(0));
@@ -14,7 +13,7 @@ int main()
 	//orthodox canonical form for all the classes of forms
 	std::cout << std::endl << "~~~test orthodox canonical form~~~" << std::endl;
 	ShrubberyCreationForm scForm("home");
-	PresidentalPardonForm ppForm("moon");
+	PresidentialPardonForm ppForm("moon");
 	RobotomyRequestForm rrForm("factory");
 
 	std::cout << std::endl << "~~~test shrubbery creation~~~" << std::endl;
@@ -27,8 +26,8 @@ int main()
 	std::cout << "print assign: " << scAssign << " with target " << scAssign.getTarget() << std::endl;
 
 	std::cout << std::endl << "~~~test shrubbery creation~~~" << std::endl;
-	PresidentalPardonForm ppCopy(ppForm);
-	PresidentalPardonForm ppAssign("farm");
+	PresidentialPardonForm ppCopy(ppForm);
+	PresidentialPardonForm ppAssign("farm");
 
 	// ppAssign = ppCopy; uncomment to call for assigment operator
 

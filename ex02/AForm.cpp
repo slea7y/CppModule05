@@ -3,7 +3,7 @@
 #include <string>
 
 AForm::AForm() : _name("default"), _signed(false), _gradeToSign(150), _gradeExec(150) {
-	std::cout << "* default constructor *\n" << _name << ", form grade to sign: " << _gradeToSign << std::endl;
+	std::cout << "* Form's default constructor *\n" << _name << ", form grade to sign: " << _gradeToSign << std::endl;
 }
 
 AForm::AForm(std::string name, int gradeToSign, int gradeToExec) : _name(name), _gradeToSign(gradeToSign), _gradeExec(gradeToExec) {

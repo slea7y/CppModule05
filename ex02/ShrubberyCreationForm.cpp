@@ -3,19 +3,19 @@
 #include <fstream>
 #include <iostream>
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shruberry Creation", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery Creation", 145, 137) {
 	std::cout << "\033[33m* ShrubberyCreationForm default constructor called *\033[0m" << std::endl;
 	this->_target = "default";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shruberry Creation", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubbery Creation", 145, 137) {
 	std::cout << "\033[33m* Shrubbery Creation Form parameterized constructor *\033[0m" << std::endl;
 	this->_target = target;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm(other) {
-	this->_target = other._target;
 	std::cout << "\033[33m* Shrubbery Creation Form copy constructor *\033[0m" << std::endl;
+	this->_target = other._target;
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other) {
