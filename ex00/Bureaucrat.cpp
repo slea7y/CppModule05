@@ -59,15 +59,15 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {
 void Bureaucrat::incrementGrade() {
 	if (this->_grade - 1 < 1)
 		throw GradeTooHighException();
-	std::cout << "incrementing this grade from " << this->_grade << " to " << this->_grade - 1 << "!" << std::endl;
-	setGrade(this->_grade - 1);
+	// std::cout << "incrementing this grade from " << this->_grade << " to " << this->_grade - 1 << "!" << std::endl;
+	_grade--;
 }
 
 void Bureaucrat::decrementGrade() {
 	if (this->_grade + 1 > 150)
 		throw GradeTooLowException();
 	std::cout << "decrementing this grade from " << this->_grade << " to " << this->_grade + 1 << "!" << std::endl;
-	setGrade(this->_grade + 1);
+	_grade++;
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj){

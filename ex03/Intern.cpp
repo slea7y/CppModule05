@@ -3,36 +3,35 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include <cstddef>
 
-Intern::Intern() : formPointer(NULL) {
+Intern::Intern() {
 	std::cout << "* Intern's default constructor *"<< std::endl ;
 }
 
-Intern::Intern( const Intern &obj ) : formPointer(obj.formPointer) {
-	std::cout << "* Intern's parameterized constructor *"<< std::endl ;
+Intern::Intern( const Intern &obj ) {
+	std::cout << "* Intern's copy constructor *"<< std::endl ;
+	(void)obj;		
 }
 
 Intern &Intern::operator=( const Intern &other ) {
-	if (this != &other)
-		this->formPointer = other.formPointer;
-	return  *this;
+	std::cout << "* Intern's assigment operator *"<< std::endl ;
+	(void)other;		
+	return *this;
 }
 
 Intern::~Intern() {
-	if (this->formPointer != NULL) {
-		delete this->formPointer;
-	}
 }
 
 AForm *Intern::makeForm( std::string name, std::string target ) {
-	std::string names[] = {"shrubbery creation",
-		"presidental pardon", "robotomy request"};
+	const std::string names[] = {"shrubbery creation",
+		"presidential pardon", "robotomy request"};
 	
 	typedef AForm* (*fp)(std::string target);
 
 	fp functions[] = { 
 		ShrubberyCreationForm::createForm,
-		PresidentalPardonForm::createForm,
+		PresidentialPardonForm::createForm,
 		RobotomyRequestForm::createForm
 	};
 
@@ -42,7 +41,6 @@ AForm *Intern::makeForm( std::string name, std::string target ) {
 			return ((functions[i])(target)); 
 		}
 	}
-	// throw AForm::GradeTooLowException();
-	std::cout << "[" << name << "] this name doesnt match any avilable forms name" << std::endl; 
-	return (NULL);
+	std::cout << "[" << name << "] this name doesnt match any available forms name" << std::endl; 
+	return nullptr;
 }

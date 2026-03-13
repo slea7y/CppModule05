@@ -11,7 +11,7 @@ class RobotomyRequestForm : public AForm {
 		RobotomyRequestForm( const RobotomyRequestForm &obj );
 		RobotomyRequestForm &operator=( const RobotomyRequestForm &obj );
 		~RobotomyRequestForm();
-		void execute(const Bureaucrat &executor) const override;
+		void execute(const Bureaucrat &executor) const;
 		std::string getTarget() const;
 		static AForm *createForm( std::string target );
 };

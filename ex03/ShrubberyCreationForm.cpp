@@ -3,29 +3,32 @@
 #include <iostream>
 #include <stdexcept>
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("shruberry creation", 145, 137) {
-	std::cout << "\033[35m* ShrubberyCreationForm default constructor called *\033[0m" << std::endl;
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("shrubbery creation", 145, 137) {
+	std::cout << "\033[33m* Shrubbery Creation Form's default constructor called *\033[0m" << std::endl;
 	this->_target = "default";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shruberry Creation", 145, 137) {
-	std::cout << "\033[35m* Shrubbery Creation Form parameterized constructor *\033[0m" << std::endl;
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubbery Creation", 145, 137) {
+	std::cout << "\033[33m* Shrubbery Creation Form's parameterized constructor *\033[0m" << std::endl;
 	this->_target = target;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm(other) {
+	std::cout << "\033[33m* Shrubbery Creation Form's copy constructor *\033[0m" << std::endl;
 	this->_target = other._target;
 }
 
-ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other) {
-	if (this != &other)
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other) {
+	std::cout << "\033[33m* Shrubbery Creation Form's assigment operator *\033[0m" << std::endl;
+	if (this != &other) {
 		AForm::operator=(other);
-	std::cout << "\033[35m* Shrubbery Creation Form copy constructor *\033[0m" << std::endl;
+		this->_target = other._target;
+	}
 	return *this;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {
-	std::cout << "\033[35m* Shrubbery Creation Form's destructor called *\033[0m" << std::endl;
+	std::cout << "\033[33m* Shrubbery Creation Form's destructor called *\033[0m" << std::endl;
 }
 
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
@@ -52,6 +55,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 			"                        |||\n"
 			"                  , -=-~  .-^- _\n\n";}
 	file.close();
+	std::cout << "\033[1;32m" << executor << " executed " << this->getName() << "\033[0m" << std::endl ;
 }
 
 
@@ -62,7 +66,3 @@ std::string ShrubberyCreationForm::getTarget() {
 AForm *ShrubberyCreationForm::createForm(std::string target) {
 	return new ShrubberyCreationForm(target);
 }
-
-// std::ostream& operator<<(std::ostream &os, const ShrubberyCreationForm &obj) {
-// 	os << 
-// }
